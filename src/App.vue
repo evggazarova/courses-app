@@ -53,10 +53,6 @@
                   <label class="form-label">Длительность (месяцев)</label>
                   <input v-model.number="newCourse.duration" type="number" class="form-control" required placeholder="4">
                 </div>
-                <div class="mb-3">
-                  <label class="form-label">URL изображения</label>
-                  <input v-model="newCourse.image" type="url" class="form-control" placeholder="https://example.com/image.jpg">
-                </div>
                 <button type="submit" class="btn btn-success w-100">Добавить курс</button>
               </form>
             </div>
@@ -90,7 +86,6 @@
       <div class="row">
         <div v-for="course in sortedCourses" :key="course.id" class="col-md-4 mb-4">
           <div class="card h-100 shadow-sm">
-            <img v-if="course.image" :src="course.image" class="card-img-top" :alt="course.title" style="height: 200px; object-fit: cover;">
             <div class="card-body">
               <h5 class="card-title">{{ course.title }}</h5>
               <p class="card-text text-muted">{{ course.description }}</p>
@@ -109,7 +104,6 @@
         </div>
       </div>
 
-      <!-- Сообщение если курсов нет -->
       <div v-if="courses.length === 0" class="text-center text-muted py-5">
         <h4>Курсы пока не добавлены</h4>
         <p>Нажмите "Вопросы" чтобы добавить первый курс</p>
@@ -138,9 +132,7 @@ const courses = ref([
     description: 'Изучите основы веб-разработки...',
     technologies: 'HTML, CSS, JavaScript, React',
     price: 30000,
-    duration: 4,
-    // Обратите внимание на расширение .webp
-    image: '/im1.webp' 
+    duration: 4
   },
   {
     id: 2,
@@ -148,8 +140,7 @@ const courses = ref([
     description: 'Освойте Python...',
     technologies: 'Pandas, NumPy, SQL',
     price: 60000,
-    duration: 6,
-    image: '/im2.webp'
+    duration: 6
   },
   {
     id: 3,
@@ -157,8 +148,7 @@ const courses = ref([
     description: 'Курс английского...',
     technologies: 'Грамматика, Разговорный',
     price: 50000,
-    duration: 6,
-    image: '/im3.webp'
+    duration: 6
   }
 ])
 
@@ -167,8 +157,7 @@ const newCourse = ref({
   description: '',
   technologies: '',
   price: 0,
-  duration: 0,
-  image: ''
+  duration: 0
 })
 
 const sortedCourses = computed(() => {
@@ -206,8 +195,7 @@ const addCourse = () => {
     description: '',
     technologies: '',
     price: 0,
-    duration: 0,
-    image: ''
+    duration: 0
   }
   
   showForm.value = false
